@@ -1,0 +1,39 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">
+        <span class="glyphicon glyphicon glyphicon-film"></span> Movies App
+      </a>
+    </div>
+​
+    <ul class="nav navbar-nav navbar-left">
+      <li><a href="/"><span class="glyphicon glyphicon glyphicon-home"></span> Home</a></li>
+      <% if (currentUser) { %>
+        <li><a href="/movies"><span class="glyphicon glyphicon glyphicon-facetime-video"></span> Movies</a></li>
+      <% } %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if (currentUser) { %>
+        <li><a href="/users/<%= currentUser.id %>"><span class="glyphicon glyphicon glyphicon-user"></span> <%= currentUser.local.email %></a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon glyphicon-exclamation-sign"></span> Logout</a></li>
+      <% } else { %>
+        <li><a href="/login"><span class="glyphicon glyphicon glyphicon-circle-arrow-right"></span> Login</a></li>
+        <li><a href="/signup"><span class="glyphicon glyphicon glyphicon-plus-sign"></span> Signup</a></li>
+        <!-- <li><a href="/about"><span class="glyphicon glyphicon glyphicon-minus-sign"></span> About</a></li> -->
+      <% } %>
+    </ul>
+  </div>
+</nav>
+<div class="flash">
+  <% if (typeof message !== 'undefined') { %>
+    <% if (typeof message.error !== 'undefined' && message.error.length > 0) { %>
+      <div class="bg-danger"><%= message.error %></div>
+    <% } %>
+    <% if (typeof message.info !== 'undefined' && message.info.length > 0) { %>
+      <div class="bg-info"><%= message.info %></div>
+    <% } %>
+    <% if (typeof message.success !== 'undefined' && message.success.length > 0) { %>
+      <div class="bg-success"><%= message.success %></div>
+    <% } %>
+  <% } %>
+</div>

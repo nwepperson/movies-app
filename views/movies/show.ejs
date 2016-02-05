@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+  <a href="/movies" class="btn btn-primary">Back</a>
+  <a href="/movies/<%= movie._id %>/edit" class="btn btn-danger">Edit</a>
+    <div>
+      <h1><%= movie.title %></h1>
+      <p><b>ID: </b><%= movie._id %></p>
+      <p><b>Release Year: </b><%= movie.release_year %></p>
+      <p><b>Description: </b><%= movie.description %></p>
+      <img src="<%= movie.photo_url %>">
+    </div>
+  </main>
+
+<footer>
+  <% include ../partials/footer %>
+</footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+  <a href="/movies" class="btn btn-primary">Back</a>
+  <a href="/users/<%=user._id%>/edit" class="btn btn-danger">Edit</a>
+    <div>
+      <h1><%= user.local.email %></h1>
+      <p><b>ID: </b><%= user._id %></p>
+      <p><b>NAME: </b><%= user.firstName %> <%= user.lastName %></p>
+      <% user.movies.forEach(function(movie) { %>
+      <div>
+        <h3><%= movie.title %></h3>
+        <p><b>ID: </b><%= movie._id %></p>
+        <p><b>Release Year: </b><%= movie.release_year %></p>
+      </div>
+      <% }) %>
+    </div>
+  </main>
+
+<footer>
+  <% include ../partials/footer %>
+</footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+    <div>
+      <h3 style="color:yellow;">Movies:</h3>
+        <h4>
+          <form method="post" action="/movies/add">
+  <div class="form-group">
+  <select name="add">
+    <% movies.forEach(function(movie) { %>
+    <option value="<%=movie.title%>"><%=movie.title%></option>
+    <% }) %>
+  </select>
+  <button type="submit" class="btn btn-default">Add</button>
+  </div>
+  </form>
+        </h4>
+    </div>
+  </div>
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+</html>
