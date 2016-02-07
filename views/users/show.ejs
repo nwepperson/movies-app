@@ -15,6 +15,7 @@
     <div>
       <h1><%= user.local.email %></h1>
       <p><b>ID: </b><%= user._id %></p>
+      <p><b>PW: </b><%= user.local.password %></p>
       <p><b>NAME: </b><%= user.firstName %> <%= user.lastName %></p>
       <% user.movies.forEach(function(movie) { %>
       <div>

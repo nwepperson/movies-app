@@ -3,7 +3,6 @@ var router = express.Router();
 var User = require('../models/user');
 var Movie = require('../models/movie');
 var omdb = require('omdb');
-var imdb = require('imdb-api');
 
 
 var authenticate = function(req, res, next) {

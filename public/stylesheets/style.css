@@ -29,6 +29,35 @@ footer {
   opacity: 0.8;
 }
 
+div.test {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+div.test1 {
+  display: inline-block;
+  margin: auto;
+  /*border: 5px solid red;*/
+  height: 100%;
+  width: 400px;
+  padding: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+img.testimg {
+  height: 500px;
+  width: 350px;
+}
+
+a.test {
+  width: 350px;
+  text-align: center;
+  color: yellow;
+}
+
 @keyframes fadeIn {
   0% { opacity: 0; }
   20% { opacity: 0.2; }
