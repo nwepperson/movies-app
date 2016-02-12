@@ -12,15 +12,15 @@
       <h3 style="color:yellow;">Movies:</h3>
         <h4>
           <form method="post" action="/movies/add">
-  <div class="form-group">
-  <select name="add">
-    <% movies.forEach(function(movie) { %>
-    <option value="<%=movie.title%>"><%=movie.title%></option>
-    <% }) %>
-  </select>
-  <button type="submit" class="btn btn-default">Add</button>
-  </div>
-  </form>
+            <div class="select-box">
+              <select multiple name="add">
+              <% movies.forEach(function(movie) { %>
+              <option value="<%=movie.title%>"><%=movie.title%></option>
+              <% }) %>
+              </select>
+              <button type="submit" class="btn btn-default">Add</button>
+            </div>
+          </form>
         </h4>
     </div>
   </div>

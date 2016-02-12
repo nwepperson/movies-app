@@ -39,10 +39,10 @@ router.post('/login', function(req, res, next) {
   return loginProperty(req, res, next);
 });
 
-// // GET /about
-// router.get('/about', function(req, res, next) {
-//   res.render('about.ejs', { message: req.flash() });
-// });
+// GET /about
+router.get('/about', function(req, res, next) {
+  res.render('about.ejs', { message: req.flash() });
+});
 
 // GET /logout
 router.get('/logout', function(req, res, next) {

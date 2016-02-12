@@ -45,8 +45,6 @@ router.get('/new', authenticate, function(req, res, next) {
 router.post('/search', authenticate, function(req, res, next) {
   var currentUser = req.user;
   var filter = req.body.search;
-  console.log(filter);
-
   omdb.search(filter, function(err, movies) {
     if(err) {
         return console.error(err);
@@ -56,37 +54,44 @@ router.post('/search', authenticate, function(req, res, next) {
         return console.log('No movies were found!');
     }
   res.render('movies/search', { movies: movies, message: req.flash() } );
-  console.log(movies);
 });
 });
 
 //ADD
 router.post('/add', authenticate, function(req, res, next) {
-  console.log("add");
-  console.log(req.body.add);
-  var currentUser = req.user;
-  omdb.get({ title: req.body.add }, true, function(err, film) {
-    if(err) {
-        return console.error(err);
-    }
-
-    if(!film) {
-        return console.log('Movie not found!');
-    }
-    var movie = {
-    title: film.title,
-    release_year: film.year,
-    description: film.plot,
-    photo_url: film.poster
+  if (req.body.add.length > 1) {
+    var array = req.body.add;
+  }
+  else {
+    var array = [req.body.add];
   };
+  console.log(array);
+  var currentUser = req.user;
+  for (i = 0; i < array.length; i++) {
+    omdb.get({ title: array[i] }, true, function(err, film) {
+      if(err) {
+          return console.error(err);
+      }
+
+      if(!film) {
+          return console.log('Movie not found!');
+      }
+      var movie = {
+      title: film.title,
+      release_year: film.year,
+      description: film.plot,
+      photo_url: film.poster
+      };
   currentUser.movies.push(movie);
   currentUser.save()
   .then(function() {
-    res.redirect('/movies');
   }, function(err) {
     return next(err);
   });
-});
+  });
+  };
+  console.log(global.currentUser.movies);
+  res.redirect('/movies');
 });
 
 //SHOW

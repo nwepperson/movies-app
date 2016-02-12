@@ -12,6 +12,16 @@
   <main>
     <div class="test">
       <h3 style="color:yellow;">Movies:</h3>
+      <form method="post" action="/movies/search">
+        <div class="form-group">
+          <input type="text"
+          class="form-control"
+          name="search"
+          required>
+          <button type="submit" class="btn btn-default">Search</button>
+          <a href="/movies/new" class="btn btn-default">Custom Movie</a><br>
+        </div>
+      </form>
       <% movies.forEach(function(movie) { %>
       <div class="test1">
           <form method="POST" action="/movies/<%= movie._id %>?_method=DELETE">
@@ -24,20 +34,7 @@
       </div>
       <% }) %>
     </div>
-    <div>
-    <a href="/movies/new" class="btn btn-default">New</a><br>
-    </div><br>
-  <form method="post" action="/movies/search">
-  <div class="form-group">
-  <input type="text"
-         class="form-control"
-         name="search"
-         required>
-  <button type="submit" class="btn btn-default">Search</button>
-  </div>
-  </form>
   </main>
-
   <footer>
     <% include ../partials/footer %>
   </footer>
