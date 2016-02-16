@@ -53,25 +53,7 @@ router.post('/search', authenticate, function(req, res, next) {
     if(movies.length < 1) {
         return console.log('No movies were found!');
     }
-    movies.forEach(function(item) {
-      omdb.get({ title: item.title }, true, function(err, film) {
-        if(err) {
-          return console.error(err);
-        }
-        if(!film) {
-          return console.log('Movie not found!');
-        }
-        var movie = {
-          title: film.title,
-          release_year: film.year,
-          description: film.plot,
-          photo_url: film.poster
-        };
-        results.push(movie);
-        console.log(results);
-      });
-    });
-    res.render('movies/search', { movies: results, message: req.flash() } );
+    res.render('movies/search', { movies: movies, message: req.flash() } );
   });
 });
 
