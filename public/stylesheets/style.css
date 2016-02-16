@@ -88,3 +88,6 @@ a.test {
     100% {background-color: red; left:0px; top:0px;}
 }
 
+button.navbar-toggle {
+  float: right;
+}

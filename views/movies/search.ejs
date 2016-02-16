@@ -8,18 +8,28 @@
     <% include ../partials/header %>
   </header>
   <main>
-    <div>
-      <h3 style="color:yellow;">Movies:</h3>
+    <div class="test">
+      <h3 style="color:yellow;">Search Results:</h3>
+      <button type="submit" class="btn btn-default">Add</button>
         <h4>
           <form method="post" action="/movies/add">
-            <div class="select-box">
-              <select multiple name="add">
+            <% movies.forEach(function(movie) { %>
+            <div class="test1">
+                <a class="test" href="/movies/<%= movie._id %>/result">
+                  <%= movie.title + ' - ' + movie.release_year %>
+                </a><br>
+                <img src="<%= movie.photo_url %>" class="testimg"><br>
+                <input type="checkbox" class="btn btn-info">Check To Add</input>
+            </div>
+            <% }) %>
+            <!-- <div class="select-box">
+              <select name="add">
               <% movies.forEach(function(movie) { %>
               <option value="<%=movie.title%>"><%=movie.title%></option>
               <% }) %>
               </select>
               <button type="submit" class="btn btn-default">Add</button>
-            </div>
+            </div> -->
           </form>
         </h4>
     </div>
